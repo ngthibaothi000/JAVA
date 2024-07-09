@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<!-- Basic -->
+
+<head th:replace="~{fragments::head}">
+
+
+</head>
+
+<body>
+<div th:replace="~{fragments::main-top}"></div>
+<!-- End Main Top -->
+
+<!-- Start Main Top -->
+<header th:replace="~{fragments::main-header}"></header>
+<!-- End Main Top -->
+
+<!-- Start Top Search -->
+<div th:replace="~{fragments::top-search}">
+</div>
+<!-- End Top Search -->
+
+<!-- Start Slider -->
+<div id="slides-shop" class="cover-slides">
+    <ul class="slides-container">
+        <li class="text-center">
+            <img src="images/001.png" alt="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="m-b-20"><strong>Welcome To <br> Stationery Shop </strong></h1>
+                        <p class="m-b-40">Enjoy your time! <br> Have you a good, fun working day!</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="text-center">
+            <img src="images/002.png" alt="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="m-b-20"><strong>Welcome To <br> Stationery Shop </strong></h1>
+                        <p class="m-b-40">Enjoy your time! <br> Have you a good, fun working day!</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="text-center">
+            <img src="images/003.png" alt="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <h1 class="m-b-20"><strong>Welcome To <br> Stationery Shop </strong></h1>
+                        <p class="m-b-40">Enjoy your time! <br> Have you a good, fun working day!</p>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="slides-navigation">
+        <a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+        <a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+    </div>
+</div>
+<!-- End Slider -->
+
+
+<!-- Start About Page  -->
+<div class="about-box-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="banner-frame"><img class="img-fluid" src="images/logo.png" alt=""/>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h2 class="noo-sh-title-top">We are <span> Stationery Shop </span></h2>
+                <p>Curating an extensive collection of office essentials,
+                    including stationery, technology accessories, organizational tools,
+                    and more, we partner with leading brands to ensure every item meets
+                    the highest standards of durability, functionality, and design. Whether
+                    you're equipping a bustling corporate office, a small startup, or a home-based
+                    workspace, we have everything you need to boost productivity and streamline your
+                    operations.</p>
+                <p>Our knowledgeable staff is here to guide you through our catalog,
+                    offering expert advice and tailored solutions to address your unique requirements.</p>
+                <p>Conveniently located in the heart of the city, Office Essentials offers a seamless
+                    shopping experience, with both in-store and online purchasing options to cater to
+                    your preferences.</p>
+                <a class="btn hvr-hover" href="#">Read More</a>
+            </div>
+        </div>
+        <div class="row my-5">
+            <div class="col-sm-6 col-lg-4">
+                <div class="service-block-inner">
+                    <h3>We are Trusted</h3>
+                    <p>We've been dedicated to providing exceptional customer service and a comprehensive
+                        range of high-quality products to support the diverse needs of modern workplaces. </p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <div class="service-block-inner">
+                    <h3>We are Professional</h3>
+                    <p>From customized bulk orders to same-day delivery,
+                        we go the extra mile to make your life easier and exceed your expectations.
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <div class="service-block-inner">
+                    <h3>We are Expert</h3>
+                    <p>Your premier destination for premium office supplies and
+                        innovative business solutions.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Start Feed  -->
+<div th:replace="~{fragments::instagram-box}">
+</div>
+
+<!-- End Feed  -->
+
+
+<!-- Start Footer  -->
+<footer th:replace="~{fragments::footer}">
+
+</footer>
+
+
+<!-- ALL JS FILES -->
+<div th:replace="~{fragments::script}"></div>
+</body>
+
+</html>
