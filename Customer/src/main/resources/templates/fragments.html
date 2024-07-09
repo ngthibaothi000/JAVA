@@ -3,42 +3,27 @@
 <head th:fragment="head">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Site Metas -->
     <title th:text="${title}">Menu</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- Site CSS -->
     <link rel="stylesheet" href="css/style.css">
-    <!-- Responsive CSS -->
     <link rel="stylesheet" href="css/responsive.css">
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/custom.css">
-    <!-- Site Icons -->
     <link rel="shortcut icon" th:href="@{/images/favicon.ico}" type="image/x-icon">
     <link rel="apple-touch-icon" th:href="@{/images/apple-touch-icon.png}">
-
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-    <!-- Site CSS -->
     <link rel="stylesheet" th:href="@{/css/style.css}">
-    <!-- Responsive CSS -->
     <link rel="stylesheet" th:href="@{/css/responsive.css}">
-    <!-- Custom CSS -->
     <link rel="stylesheet" th:href="@{/css/custom.css}">
 </head>
 <body>
-<!-- Start Main Top -->
 <div class="main-top" th:fragment="main-top">
     <div class="container-fluid">
         <div class="row">
@@ -46,8 +31,7 @@
                 <div class="our-link">
                     <ul>
                         <li><a href="#"> Call US : +8486543471</a></li>
-                        <li><a href="#"><i class="fas fa-location-arrow"></i> Address: 475A, Dien Bien Phu, Binh Thanh,
-                            Ho Chi Minh</a></li>
+                        <li><a href="#"><i class="fas fa-location-arrow"></i> Address: 475A, Dien Bien Phu, Binh Thanh, Ho Chi Minh</a></li>
                     </ul>
                 </div>
             </div>
@@ -74,18 +58,6 @@
                             <li>
                                 <i class="fab fa-opencart"></i> Off upto 10%! Shop Now
                             </li>
-                            <li>
-                                <i class="fab fa-opencart"></i> Off 5% for new members
-                            </li>
-                            <li>
-                                <i class="fab fa-opencart"></i> Freeship
-                            </li>
-                            <li>
-                                <i class="fab fa-opencart"></i> 10% off Entire Purchase Promo code: Stationery
-                            </li>
-                            <li>
-                                <i class="fab fa-opencart"></i> Off 10%! Shop Now
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -93,77 +65,65 @@
         </div>
     </div>
 </div>
-<!-- End Main Top -->
-
-<!-- Start Main Top -->
 <header class="main-header" th:fragment="main-header">
-    <!-- Start Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
         <div class="container">
-            <!-- Start Header Navigation -->
             <div class="navbar-header">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu"
                         aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" th:href="@{/}"><img th:src="@{/images/logo.png}" class="logo" width="130"
-                                                            height="80" alt=""></a>
+                <a class="navbar-brand" th:href="@{/}">
+                    <img th:src="@{/images/logo.png}" class="logo" width="130" height="80" alt="Logo">
+                </a>
             </div>
-            <!-- End Header Navigation -->
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-menu">
                 <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                     <li class="nav-item"><a class="nav-link" th:href="@{/}">Home</a></li>
                     <li class="nav-item"><a class="nav-link" th:href="@{/menu}">Product</a></li>
-
                     <li class="dropdown">
                         <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Shop</a>
                         <ul class="dropdown-menu">
                             <li><a th:href="@{/shop-detail}">Shop Detail</a></li>
-                            <li><a th:href="@{/orders}">Your order</a></li>
+                            <li><a th:href="@{/orders}">Your Orders</a></li>
                             <li><a th:href="@{/profile}">My Account</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item active"><a class="nav-link" th:href="@{/contact}">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/contact}">Contact Us</a></li>
                 </ul>
             </div>
-            <!-- /.navbar-collapse -->
-
-            <!-- Start Atribute Navigation -->
             <div class="attr-nav2">
-                <ul>
-                    <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
-                    <li class="side-menu">
-                        <a href="#" th:href="@{/cart}">
+                <ul class="navbar-nav ml-auto align-items-center">
+                    <li class="nav-item search">
+                        <a href="#" class="nav-link">
+                            <i class="fa fa-search"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item side-menu">
+                        <a th:href="@{/cart}" class="nav-link">
                             <i class="fa fa-shopping-bag"></i>
-                            <span class="badge"
+                            <span class="badge badge-pill badge-dark"
                                   th:text="${session.totalItems == null} ? '0' : ${session.totalItems}"></span>
-                            <p>My Cart</p>
+                            <p class="d-inline-block ml-2">My Cart</p>
                         </a>
                     </li>
                 </ul>
             </div>
-            <!-- End Atribute Navigation -->
         </div>
     </nav>
-    <!-- End Navigation -->
 </header>
-<!-- End Main Top -->
-
-<!-- Start Top Search -->
-<div class="top-search" th:fragment="top-search">
+<div class="top-search bg-light" th:fragment="top-search">
     <div class="container">
         <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-search"></i></span>
-            <input type="text" class="form-control" placeholder="Search">
+            <input type="text" class="form-control" placeholder="Search" aria-label="Search">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button>
+            </div>
             <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
         </div>
     </div>
 </div>
-<!-- End Top Search -->
 
-<!-- Start Slider -->
 <div class="all-title-box" th:fragment="all-title-box">
     <div class="container">
         <div class="row">
@@ -177,15 +137,11 @@
         </div>
     </div>
 </div>
-<!-- End Slider -->
-
-<!-- Start Feed  -->
 <div class="instagram-box" th:fragment="instagram-box">
     <div class="main-instagram owl-carousel owl-theme">
         <div class="item">
             <div class="ins-inner-box">
                 <a href="index.html"><img th:src="@{/images/01.png}" alt=""/></a>
-
             </div>
         </div>
         <div class="item">
@@ -221,11 +177,6 @@
         </div>
     </div>
 </div>
-
-<!-- End Feed  -->
-
-
-<!-- Start Footer  -->
 <footer th:fragment="footer">
     <div class="footer-main">
         <div class="container">
@@ -268,11 +219,9 @@
     </div>
 </footer>
 <div th:fragment="script">
-    <!-- ALL JS FILES -->
     <script th:src="@{/js/jquery-3.2.1.min.js}"></script>
     <script th:src="@{/js/popper.min.js}"></script>
     <script th:src="@{/js/bootstrap.min.js}"></script>
-    <!-- ALL PLUGINS -->
     <script th:src="@{/js/jquery.superslides.min.js}"></script>
     <script th:src="@{/js/bootstrap-select.js}"></script>
     <script th:src="@{/js/inewsticker.js}"></script>

@@ -6,31 +6,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 </head>
-
 <body>
-<!-- Start Main Top -->
 <div th:replace="fragments ::main-top">
 </div>
-<!-- End Main Top -->
-
-<!-- Start Main Top -->
 <header th:replace="~{fragments::main-header}">
 </header>
-<!-- End Main Top -->
-
-<!-- Start Top Search -->
 <div th:replace="~{fragments::top-search}">
 </div>
-<!-- End Top Search -->
-
-<!-- Start All Title Box -->
 <div th:replace="~{fragments::all-title-box}">
 </div>
-<!-- End All Title Box -->
-
-<!-- Update Personal Information -->
 <div class="cart-box-main">
     <div class="container">
         <div class="row">
@@ -45,7 +31,6 @@
                             <th class="order-date">Order Date</th>
                             <th>Delivery Date</th>
                             <th class="price-pr">Order Status</th>
-
                             <th class="quantity-box">Quantity</th>
                             <th>Total Price</th>
                             <th class="total-pr">Payment Method</th>
@@ -58,9 +43,7 @@
                                 <span><b>[(${order.orderDate})]</b></span>
                             </td>
                             <td class="name-pr" >
-                                <a th:if = "${order.accept != null}" href="#">
-                                    [(${order.deliveryDate})]
-                                </a>
+                                <a th:if = "${order.accept != null}" href="#">[(${order.deliveryDate})]</a>
                                 <a th:if = "${order.accept == null}"><p>Pending</p> </a>
                             </td>
                             <td class="price-pr">
@@ -71,12 +54,10 @@
                                 <p style="color: red">$ [(${order.totalPrice})]</p>
                             </td>
                             <td class="total-pr" style="color: black">
-                                <span></span>[(${order.paymentMethod})]</span>
+                                <span>[(${order.paymentMethod})]</span>
                             </td>
                             <td>
-                                <a th:href="@{/cancel-order/(id = ${order.id})}" class="button-cancel">Cancel</a>
-                            </td>
-                            </a>
+                                <a th:href="@{/cancel-order/{id}(id = ${order.id})}" class="button-cancel">Cancel</a>
                             </td>
                         </tr>
                         </tbody>
@@ -86,13 +67,8 @@
         </div>
     </div>
 </div>
-
 <footer th:replace="~{fragments::footer}"></footer>
-
 <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
-
-<!-- ALL JS FILES -->
 <div th:replace="~{fragments::script}"></div>
 </body>
-
 </html>

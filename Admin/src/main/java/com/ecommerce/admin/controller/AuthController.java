@@ -21,16 +21,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 public class AuthController {
     private final AdminService adminService;
-
     private final BCryptPasswordEncoder passwordEncoder;
-
-
     @RequestMapping("/login")
     public String login(Model model) {
         model.addAttribute("title", "Login Page");
         return "login";
     }
-
     @RequestMapping("/index")
     public String index(Model model) {
         model.addAttribute("title", "Home Page");
@@ -40,27 +36,22 @@ public class AuthController {
         }
         return "index";
     }
-
     @GetMapping("/register")
     public String register(Model model) {
         model.addAttribute("title", "Register");
         model.addAttribute("adminDto", new AdminDto());
         return "register";
     }
-
     @GetMapping("/forgot-password")
     public String forgotPassword(Model model) {
         model.addAttribute("title", "Forgot Password");
         return "forgot-password";
     }
-
     @PostMapping("/register-new")
     public String addNewAdmin(@Valid @ModelAttribute("adminDto") AdminDto adminDto,
                               BindingResult result,
                               Model model) {
-
         try {
-
             if (result.hasErrors()) {
                 model.addAttribute("adminDto", adminDto);
                 return "register";
@@ -89,6 +80,5 @@ public class AuthController {
             model.addAttribute("errors", "The server has been wrong!");
         }
         return "register";
-
     }
 }
