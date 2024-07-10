@@ -2,8 +2,10 @@ package com.ecommerce.library.repository;
 
 import com.ecommerce.library.dto.CategoryDto;
 import com.ecommerce.library.model.Category;
+import com.ecommerce.library.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -21,4 +23,8 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
             "where c.activated = true and c.deleted = false " +
             "group by c.id ")
     List<CategoryDto> getCategoriesAndSize();
+
+    @Query("select p from Product p where p.name like %?1% or p.description like %?1%")
+    List<Product> searchCategories(String keyword);
+    List<Category> findByNameContainingIgnoreCase(String keyword);
 }

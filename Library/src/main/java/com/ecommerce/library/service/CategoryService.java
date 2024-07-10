@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface CategoryService {
+    List<Category> findAll();
+
     Category save(Category category);
 
     Category update(Category category);
@@ -22,4 +24,6 @@ public interface CategoryService {
     void enableById(Long id);
 
     List<CategoryDto> getCategoriesAndSize();
+
+    List<Category> searchCategories(String keyword);
 }

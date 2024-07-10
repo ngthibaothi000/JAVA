@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="~{fragments::header}"></head>
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul th:replace="~{fragments::sidebar}"></ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <nav th:replace="~{fragments::top-navbar}"></nav>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                <!-- Search Form -->
+                <div class="row mb-4">
+                    <div class="col-md-12">
+                        <form th:action="@{/search-categories}" method="get" class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm danh mục" aria-label="Search" name="keyword">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                                <i class="fas fa-search"></i> Tìm kiếm
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Back to Category List Button -->
+                <a th:href="@{/categories}" class="btn btn-secondary mb-4">Quay lại danh sách</a>
+
+                <!-- Display Results -->
+                <p th:if="${size == 0}">Không có loại sản phẩm nào phù hợp với tìm kiếm của bạn.</p>
+
+                <div th:if="${success}" class="text-center alert alert-success">
+                    <p th:text="${success}"></p>
+                </div>
+
+                <div th:if="${error}" class="text-center alert alert-danger">
+                    <p th:text="${error}"></p>
+                </div>
+
+                <!-- Category Table -->
+                <table class="table table-striped" th:if="${size > 0}">
+                    <thead>
+                    <tr>
+                        <th scope="col">Mã loại</th>
+                        <th scope="col">Tên loại sản phẩm</th>
+                        <th scope="col">Cập nhật</th>
+                        <th scope="col">Thao tác</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="category : ${categories}">
+                        <th scope="row" th:text="${category.id}"></th>
+                        <td th:text="${category.name}"></td>
+                        <td>
+                            <a id="editButton" th:href="@{/findById(id=${category.id})}" class="btn btn-primary">Sửa</a>
+                        </td>
+                        <td>
+                            <a th:if="${category.deleted} == true" th:href="@{/enable-category(id=${category.id})}" class="btn btn-primary">Khôi phục</a>
+                            <a th:if="${category.deleted} == false" th:href="@{/delete-category(id=${category.id})}" class="btn btn-danger">Xóa</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer th:replace="~{fragments::footer}"></footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button -->
+<a th:replace="~{fragments::scroll}"></a>
+
+<!-- Bootstrap core JavaScript -->
+<div th:replace="~{fragments::script}"></div>
+
+<script th:src="@{/js/categories.js}"></script>
+
+</body>
+</html>

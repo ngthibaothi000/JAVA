@@ -9,11 +9,17 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class CategoryServiceImpl implements CategoryService {
     private final CategoryRepository categoryRepository;
+
+    @Override
+    public List<Category> findAll() {
+        return categoryRepository.findAll();  // Triển khai phương thức này
+    }
 
     @Override
     public Category save(Category category) {
@@ -67,6 +73,13 @@ public class CategoryServiceImpl implements CategoryService {
     public List<CategoryDto> getCategoriesAndSize() {
         List<CategoryDto> categories = categoryRepository.getCategoriesAndSize();
         return categories;
+    }
+
+    @Override
+    public List<Category> searchCategories(String keyword) {
+        return categoryRepository.findAllByActivatedTrue().stream()
+                .filter(category -> category.getName().toLowerCase().contains(keyword.toLowerCase()))
+                .collect(Collectors.toList());
     }
 
 }

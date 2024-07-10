@@ -1,3 +1,138 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="vi" xmlns:th="https://www.thymeleaf.org/">-->
+<!--<head th:replace="~{fragments::header}"></head>-->
+<!--<body id="page-top">-->
+
+<!--&lt;!&ndash; Page Wrapper &ndash;&gt;-->
+<!--<div id="wrapper">-->
+
+<!--    &lt;!&ndash;Sidebar&ndash;&gt;-->
+<!--    <ul th:replace="~{fragments::sidebar}"></ul>-->
+<!--    &lt;!&ndash; End of Sidebar &ndash;&gt;-->
+
+<!--    &lt;!&ndash; Content Wrapper &ndash;&gt;-->
+<!--    <div id="content-wrapper" class="d-flex flex-column">-->
+
+<!--        &lt;!&ndash; Main Content &ndash;&gt;-->
+<!--        <div id="content">-->
+
+<!--            &lt;!&ndash; Topbar &ndash;&gt;-->
+<!--            <nav th:replace="~{fragments::top-navbar}"></nav>-->
+<!--            &lt;!&ndash; End of Topbar &ndash;&gt;-->
+
+<!--            &lt;!&ndash; Begin Page Content &ndash;&gt;-->
+<!--            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleAddCategoryModal"-->
+<!--                    data-whatever="@mdo">Thêm loại sản phẩm-->
+<!--            </button>-->
+<!--            <p th:if="${size == 0}">Không có loại sản phẩm nào</p>-->
+<!--            <div th:if="${success}" class="text-center alert alert-success">-->
+<!--                <p th:text="${success}"></p>-->
+<!--            </div>-->
+<!--            <div th:if="${error}" class="text-center alert alert-danger">-->
+<!--                <p th:text="${error}"></p>-->
+<!--            </div>-->
+
+<!--            <table class="table table-striped" th:if="${size > 0}">-->
+<!--                <thead>-->
+<!--                <tr>-->
+<!--                    <th scope="col">Mã loại</th>-->
+<!--                    <th scope="col">Tên loại sản phẩm</th>-->
+<!--                    <th scope="col">Cập nhật</th>-->
+<!--                    <th scope="col">Thao tác</th>-->
+<!--                </tr>-->
+<!--                </thead>-->
+<!--                <tbody>-->
+<!--                <tr th:each="category : ${categories}">-->
+<!--                    <th scope="row" th:text="${category.id}"></th>-->
+<!--                    <td th:text="${category.name}"></td>-->
+<!--                    <td>-->
+<!--                        <a id="editButton" th:href="@{/findById(id = ${category.id})}" class="btn btn-primary">Sửa</a>-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        <a th:if="${category.deleted} == true" th:href="@{/enable-category(id = ${category.id})}" class="btn btn-primary">Khôi phục</a>-->
+<!--                        <a th:if="${category.deleted} == false" th:href="@{/delete-category(id = ${category.id})}" class="btn btn-danger">Xóa</a>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                </tbody>-->
+<!--            </table>-->
+
+<!--            &lt;!&ndash; End of Main Content &ndash;&gt;-->
+
+<!--            &lt;!&ndash; Footer &ndash;&gt;-->
+<!--            <footer th:replace="~{fragments::footer}"></footer>-->
+<!--            &lt;!&ndash; End of Footer &ndash;&gt;-->
+
+<!--        </div>-->
+<!--        &lt;!&ndash; End of Content &ndash;&gt;-->
+
+<!--    </div>-->
+<!--    &lt;!&ndash; End of Content Wrapper &ndash;&gt;-->
+
+<!--</div>-->
+<!--&lt;!&ndash; End of Page Wrapper &ndash;&gt;-->
+
+<!--&lt;!&ndash; Scroll to Top Button&ndash;&gt;-->
+<!--<a th:replace="~{fragments::scroll}"></a>-->
+
+<!--&lt;!&ndash; Modal Thêm loại sản phẩm &ndash;&gt;-->
+<!--<div class="modal fade" id="exampleAddCategoryModal" tabindex="-1" role="dialog"-->
+<!--     aria-labelledby="exampleAddCategoryModalLabel"-->
+<!--     aria-hidden="true">-->
+<!--    <div class="modal-dialog" role="document">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <h5 class="modal-title" id="exampleAddCategoryModalLabel">Thêm mới loại sản phẩm</h5>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <form th:action="@{/save-category}" method="post">-->
+<!--                    <div class="form-group">-->
+<!--                        <label for="name" class="col-form-label">Tên loại sản phẩm:</label>-->
+<!--                        <input type="text" class="form-control" id="name" name="name">-->
+<!--                    </div>-->
+<!--                    <div class="modal-footer">-->
+<!--                        <button type="submit" class="btn btn-primary">Lưu</button>-->
+<!--                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>-->
+<!--                    </div>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--&lt;!&ndash; End Modal Thêm loại sản phẩm &ndash;&gt;-->
+
+<!--&lt;!&ndash; Modal Sửa loại sản phẩm &ndash;&gt;-->
+<!--<div class="modal fade" id="editModal" tabindex="-1" role="dialog"-->
+<!--     aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog" role="document">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <h5 class="modal-title" id="exampleModalLabel">Chỉnh sửa loại sản phẩm</h5>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <form th:action="@{/update-category}" method="put">-->
+<!--                    <div class="form-group">-->
+<!--                        <label for="idEdit" class="col-form-label">Mã loại:</label>-->
+<!--                        <input type="text" class="form-control" id="idEdit" name="id" readonly>-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <label for="nameEdit" class="col-form-label">Tên loại sản phẩm:</label>-->
+<!--                        <input type="text" class="form-control" id="nameEdit" name="name">-->
+<!--                    </div>-->
+<!--                    <button type="submit" class="btn btn-primary">Lưu</button>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--&lt;!&ndash; End Modal Sửa loại sản phẩm &ndash;&gt;-->
+
+<!--&lt;!&ndash; Bootstrap core JavaScript&ndash;&gt;-->
+<!--<div th:replace="~{fragments::script}"></div>-->
+
+<!--<script th:src="@{/js/categories.js}"></script>-->
+
+<!--</body>-->
+<!--</html>-->
 <!DOCTYPE html>
 <html lang="vi" xmlns:th="https://www.thymeleaf.org/">
 <head th:replace="~{fragments::header}"></head>
@@ -21,40 +156,58 @@
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleAddCategoryModal"
-                    data-whatever="@mdo">Thêm loại sản phẩm
-            </button>
-            <p th:if="${size == 0}">Không có loại sản phẩm nào</p>
-            <div th:if="${success}" class="text-center alert alert-success">
-                <p th:text="${success}"></p>
-            </div>
-            <div th:if="${error}" class="text-center alert alert-danger">
-                <p th:text="${error}"></p>
-            </div>
+            <div class="container-fluid">
 
-            <table class="table table-striped" th:if="${size > 0}">
-                <thead>
-                <tr>
-                    <th scope="col">Mã loại</th>
-                    <th scope="col">Tên loại sản phẩm</th>
-                    <th scope="col">Cập nhật</th>
-                    <th scope="col">Thao tác</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="category : ${categories}">
-                    <th scope="row" th:text="${category.id}"></th>
-                    <td th:text="${category.name}"></td>
-                    <td>
-                        <a id="editButton" th:href="@{/findById(id = ${category.id})}" class="btn btn-primary">Sửa</a>
-                    </td>
-                    <td>
-                        <a th:if="${category.deleted} == true" th:href="@{/enable-category(id = ${category.id})}" class="btn btn-primary">Khôi phục</a>
-                        <a th:if="${category.deleted} == false" th:href="@{/delete-category(id = ${category.id})}" class="btn btn-danger">Xóa</a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+                <!-- Search Form -->
+                <div class="row mb-4">
+                    <div class="col-md-12">
+                        <form th:action="@{/search-categories}" method="get" class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm danh mục" aria-label="Search" name="keyword">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                                <i class="fas fa-search"></i> Tìm kiếm
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Add Category Button -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleAddCategoryModal" data-whatever="@mdo">Thêm loại sản phẩm</button>
+
+                <p th:if="${size == 0}">Không có loại sản phẩm nào</p>
+
+                <div th:if="${success}" class="text-center alert alert-success">
+                    <p th:text="${success}"></p>
+                </div>
+
+                <div th:if="${error}" class="text-center alert alert-danger">
+                    <p th:text="${error}"></p>
+                </div>
+
+                <!-- Category Table -->
+                <table class="table table-striped" th:if="${size > 0}">
+                    <thead>
+                    <tr>
+                        <th scope="col">Mã loại</th>
+                        <th scope="col">Tên loại sản phẩm</th>
+                        <th scope="col">Cập nhật</th>
+                        <th scope="col">Thao tác</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="category : ${categories}">
+                        <th scope="row" th:text="${category.id}"></th>
+                        <td th:text="${category.name}"></td>
+                        <td>
+                            <a id="editButton" th:href="@{/findById(id=${category.id})}" class="btn btn-primary">Sửa</a>
+                        </td>
+                        <td>
+                            <a th:if="${category.deleted} == true" th:href="@{/enable-category(id=${category.id})}" class="btn btn-primary">Khôi phục</a>
+                            <a th:if="${category.deleted} == false" th:href="@{/delete-category(id=${category.id})}" class="btn btn-danger">Xóa</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
 
             <!-- End of Main Content -->
 
@@ -75,9 +228,7 @@
 <a th:replace="~{fragments::scroll}"></a>
 
 <!-- Modal Thêm loại sản phẩm -->
-<div class="modal fade" id="exampleAddCategoryModal" tabindex="-1" role="dialog"
-     aria-labelledby="exampleAddCategoryModalLabel"
-     aria-hidden="true">
+<div class="modal fade" id="exampleAddCategoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleAddCategoryModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -101,8 +252,7 @@
 <!-- End Modal Thêm loại sản phẩm -->
 
 <!-- Modal Sửa loại sản phẩm -->
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog"
-     aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
