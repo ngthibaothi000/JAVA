@@ -3,6 +3,8 @@ package com.ecommerce.admin.controller;
 import com.ecommerce.library.dto.AdminDto;
 import com.ecommerce.library.model.Admin;
 import com.ecommerce.library.service.AdminService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -27,6 +29,24 @@ public class AuthController {
         model.addAttribute("title", "Login Page");
         return "login";
     }
+
+
+    public class LogoutController {
+        @PostMapping("/logout")
+        public String logout(HttpServletRequest request) {
+            // Xóa session attributes liên quan đến người dùng
+            HttpSession session = request.getSession();
+            session.removeAttribute("user");
+
+            // Đặt trạng thái đăng nhập của người dùng thành "chưa đăng nhập"
+            // Ví dụ: sử dụng Spring Security
+            SecurityContextHolder.clearContext();
+
+            // Chuyển hướng người dùng đến trang đăng nhập hoặc trang chủ
+            return "redirect:/login";
+        }
+    }
+
     @RequestMapping("/index")
     public String index(Model model) {
         model.addAttribute("title", "Home Page");
