@@ -39,8 +39,9 @@
                 <div class="login-box">
                     <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In" onchange="location = this.value;">
                         <option>Authentication</option>
-                        <option th:if = "${session.username == null}" value = "http://localhost:8020/shop/login">Sign In </option>
-                        <option th:if = "${session.username == null}" value ="http://localhost:8020/shop/register">Sign Up</option>
+                        <option th:if="${session.username == null}" value="/shop/login">Sign In</option>
+                        <option th:if="${session.username == null}" value="/shop/register">Sign Up</option>
+                        <option th:if="${session.username != null}" value="/shop/logout">Logout</option>
                     </select>
                 </div>
                 <div class="text-slid-box">
@@ -193,9 +194,9 @@
                     <div class="footer-top-box">
                         <h3>Contact Us</h3>
                         <ul class="list-time">
-                            <li><i class="fas fa-phone-square"></i> Phone number: +8486543471</li>
+                            <li><i class="fas fa-phone-square"></i> Phone number: +84123456789</li>
                             <li><i class="fas fa-envelope"></i> Email: hutech@gmail.com</li>
-                            <li><i class="fas fa-map-marker-alt"></i> Address: 475A, Dien Bien Phu, Binh Thanh</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Address: 475A, Dien Bien Phu, Binh Thanh, Ho Chi Minh</li>
                         </ul>
                     </div>
                 </div>

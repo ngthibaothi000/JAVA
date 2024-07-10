@@ -66,5 +66,11 @@ public class LoginController {
         return "register";
     }
 
+    @GetMapping("/logout")
+    public String logout(Model model) {
+        model.addAttribute("title", "Logout Page");
+        model.addAttribute("page", "Home");
+        return "logout";
+    }
 
 }
