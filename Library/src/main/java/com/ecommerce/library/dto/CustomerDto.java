@@ -20,7 +20,7 @@ public class CustomerDto {
     @Size(min = 3, max = 15, message = "Password contains 3-10 characters")
     private String password;
 
-    @Size(min = 10, max = 15, message = "Phone number contains 10-15 characters")
+    @Size(min = 10, max = 15, message = "Số điện thoại từ 10 -15 kí tự")
     private String phoneNumber;
 
     private String address;
