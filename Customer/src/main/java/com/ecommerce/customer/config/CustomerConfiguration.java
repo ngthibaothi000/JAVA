@@ -17,29 +17,22 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
 public class CustomerConfiguration {
-
     @Bean
     public UserDetailsService userDetailsService() {
         return new CustomerServiceConfig();
     }
-
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         AuthenticationManagerBuilder authenticationManagerBuilder
                 = http.getSharedObject(AuthenticationManagerBuilder.class);
-
         authenticationManagerBuilder
                 .userDetailsService(userDetailsService())
                 .passwordEncoder(passwordEncoder());
-
         AuthenticationManager authenticationManager = authenticationManagerBuilder.build();
-
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests( author ->
@@ -67,5 +60,4 @@ public class CustomerConfiguration {
         ;
         return http.build();
     }
-
 }
