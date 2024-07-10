@@ -32,7 +32,7 @@ public class AuthController {
 
 
     public class LogoutController {
-        @PostMapping("/logout")
+        @GetMapping("/logout")
         public String logout(HttpServletRequest request) {
             // Xóa session attributes liên quan đến người dùng
             HttpSession session = request.getSession();
